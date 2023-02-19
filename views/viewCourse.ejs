@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/viewcourse.css" />
+</head>
+
+<body>
+  <div id="main">
+    <%- include partials/courseNav.ejs %>
+      <div class="course-container">
+        <div class="course-left">
+          <div class="cl-1">
+          <div class="cl-1-text">
+              <h1>
+              <%=currentCourse.name%>
+            </h1>
+            <h4>
+              <%=currentCourse.desc%>
+            </h4>
+          </div>
+<div class="course-right">
+          <div class="course-right-up">
+            <div class="course-photo">
+              <img src="/images/files/<%=currentCourse.photo%>" alt="" />
+            </div>
+
+            <%if(user===null){%>
+              <button onclick="location.href='/login'">Add to Cart</button>
+
+            <%}else{%>
+              <%if(!user.cart.includes(currentCourse._id)){%>
+              <button onclick="location.href='/addtocart/<%=currentCourse._id%>'">Add to Cart</button>
+
+              <%}else{%>
+                <button style="background: rgb(237, 56, 6);"
+                  onclick="location.href='/removefromcart/<%=currentCourse._id%>'">Remove from Cart</button>
+
+                <%}%>
+            <%}%>
+            
+          </div>
+          <div class="course-right-down">
+            <h5>What's included</h4>
+              <div class="course-right-down-text">
+                <span class="icons"><i class="ri-live-line"></i>
+                  <h6>
+                    <%=currentCourse.type%>
+                  </h6>
+                </span>
+                <span class="icons"><i class="ri-add-fill"></i>
+                  <h6>
+                    <%=currentCourse.time%>
+                  </h6>
+
+                </span>
+                <span class="icons"><i class="ri-check-fill"></i>
+                  <h6>
+                    <%=currentCourse.category%>
+                  </h6>
+
+                </span>
+              </div>
+
+          </div>
+        </div>
+
+
+          </div>
+          <div class="cl-2">
+            <h4>Syllabus</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum magnam nemo quasi asperiores autem
+              ipsa officiis totam dicta tempore aliquam!</p>
+          </div>
+          <div class="cl-3">
+            <h4>Instructor</h4>
+            <div class="author">
+              <div class="author-info">
+                <div class="author-photo">
+                  <!-- <img src="" alt=""> -->
+                </div>
+                <h3>
+                  <%=currentCourse.instructor%>
+                </h3>
+              </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam nisi saepe aliquam ratione fuga eveniet,
+              consectetur non autem incidunt officiis!</p>
+          </div>
+          <div class="cl-4">
+            <h4>About This Course</h4>
+            <p>
+              <%=currentCourse.details%>
+            </p>
+          </div>
+        </div>
+  </div>
+  <%- include partials/courseFooter.ejs %>
+    </div>
+    <script>
+      if (localStorage.getItem("mode") === "light") {
+      document.querySelector("body").classList.add("light")
+      document.querySelector(".navbar").classList.add("light")
+      document.querySelector("body").classList.remove("dark")
+      document.querySelector(".navbar").classList.remove("dark")
+
+    } else {
+
+      document.querySelector("body").classList.remove("light")
+      document.querySelector(".navbar").classList.remove("light")
+      document.querySelector("body").classList.add("dark")
+      document.querySelector(".navbar").classList.add("dark")
+
+    }
+    </script>
+</body>
+
+</html>

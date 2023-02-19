@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/resetentermail.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style></style>
+  </head>
+  <body>
+    <div id="main">
+      <div class="signupcard">
+        <div class="signuptext">
+          <h1 onclick="location.href='/'" style="cursor: pointer">
+            { Go.Buddy }
+          </h1>
+          <h2>Forgot Password</h2>
+          <a href="/signup"><h3>Don't have an account ?</h3></a>
+        </div>
+        <form
+          action="/sendforgotpasswordmail"
+          method="post"
+          style="height: 18vw"
+        >
+          <label for="email">
+            Email <br />
+            <input
+              type="email"
+              name="email"
+              autoComplete="off"
+              required
+              placeholder="Enter your Email"
+            />
+          </label>
+          <%if(message.length>0){%>
+          <script type="text/javascript">
+            document.querySelector("form").style.justifyContent =
+              "space-evenly";
+            document.querySelector("form").style.height = "58vh";
+          </script>
+          <div class="alert"><h4><%=message%></h4></div>
+          <%}%>
+          <button id="btn-signup">Submit</button>
+          <%if(message.length>0){%>
+
+          <button id="cancel" onclick="location.href='/login'">CANCEL</button>
+
+          <%}%>
+        </form>
+      </div>
+    </div>
+    <script>
+      const toggle = document.querySelector("#toggle");
+      const password = document.querySelector("#password");
+
+      toggle.addEventListener("click", function (dets) {
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        this.classList.toggle("ri-eye-off-line");
+      });
+    </script>
+  </body>
+</html>

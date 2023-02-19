@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/login.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="main">
+      <div class="signupcard">
+        <div class="signuptext">
+          <h1 onclick="location.href='/'" style="cursor: pointer">
+            { Go.Buddy }
+          </h1>
+          <h2>Login to your Account</h2>
+          <a href="/signup"><h3>Don't have an account ?</h3></a>
+        </div>
+        <form action="/login" method="post" style="height: 23vw">
+          <label for="email">
+            Email <br />
+            <input
+              type="email"
+              name="email"
+              autoComplete="off"
+              required
+              placeholder="Enter your Email"
+            />
+          </label>
+          <label for="password">
+            Password <br />
+            <input
+              type="password"
+              autoComplete="off"
+              name="password"
+              required
+              placeholder="Enter your Password"
+              id="password"
+            />
+          </label>
+          <i id="toggle" class="ri-eye-line"></i>
+          <div class="forgot">
+            <a href="/forgotpassword">Forgot Password ?</a>
+          </div>
+          <br />
+          <button id="btn-signup">Login</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const toggle = document.querySelector("#toggle");
+      const password = document.querySelector("#password");
+
+      toggle.addEventListener("click", function (dets) {
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        this.classList.toggle("ri-eye-off-line");
+      });
+    </script>
+  </body>
+</html>

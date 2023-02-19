@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/courseNav.css" />
+
+</head>
+
+<body>
+  <i class="ri-menu-line"></i>
+  <div class="navbar">
+    <div class="nav-left">
+      <h1 style="cursor:pointer" onclick="location.href='/'">{ Go.Buddy }</h1>
+      <i class="ri-search-line"></i>
+
+      <input type="text" name="" />
+    </div>
+    <div class="nav-next">
+      <li><a href="/account/profile">My Account</a></li>
+      <li><a href="/">My Enrollments</a></li>
+      <li><a href="/logout" id="logout">Log out</a></li>
+    </div>
+    <div class="nav-right">
+      <li><button id="line2">
+          <i class="ri-sun-line"></i>
+          Light</button></li>
+
+      </li>
+      <li><a href="">Android App</a></li>
+      <li><a href="/courses">Courses</a></li>
+      <li><a href=""> Newsfeed</a></li>
+      <li>
+        <a href="/profile/cart">Cart</a>
+      </li>
+
+      <%if(user===null){%>
+        <li>
+          <button id="line" onclick="location.href='/login'">
+            SIGN IN
+          </button>
+        </li>
+        <li>
+          <button id="fill" onclick="location.href='/signup'">SIGN UP</button>
+        </li>
+        <%}else{%>
+          <!-- <h3 style="text-transform: capitalize;">Hey , <%=user.name%></h3> -->
+          <%if(user.profilePic==="def.jpg"){%>
+
+            <div class="user-icon">
+              <h1>
+                <%=shortname%>
+              </h1>
+              <span class="label2"></span>
+            </div>
+            <%}else{%>
+              <div class="user-photo">
+                <span class="label"></span>
+
+                <img src="/images/files/<%=user.profilePic%>" alt="">
+              </div>
+
+              <%}%>
+                <%}%>
+    </div>
+  </div>
+  <script>
+    var flag = false;
+    document
+      .querySelector(".ri-menu-line")
+      .addEventListener("click", function (dets) {
+        if (flag === false) {
+          document.querySelector(".nav-right").style.display = "block";
+          flag = true;
+        } else {
+          flag = false;
+          document.querySelector(".nav-right").style.display = "none";
+        }
+      });
+
+      if(document.querySelector(".user-photo , .user-icon")!==null){
+var flagnav = false;
+    document.querySelector(".user-photo , .user-icon").addEventListener("click", function () {
+      if (flagnav === false) {
+        document.querySelector(".nav-next").style.display = "flex";
+        flagnav = true;
+      } else {
+        flagnav = false;
+        document.querySelector(".nav-next").style.display = "none";
+
+      }
+    })
+      }
+    
+
+    document.querySelector("#line2").addEventListener("click", function (dets) {
+      let mode = localStorage.getItem("mode")
+        // document.querySelector("#line2").innerHTML=`<i class="ri-sun-line"></i> Light`
+
+      if (mode === "dark") {
+        document.querySelector("#line2").innerHTML=`<i class="ri-moon-fill"></i> Dark`
+
+        localStorage.setItem("mode", "light")
+
+
+        document.querySelector("body").classList.add("light")
+        document.querySelector(".navbar").classList.add("light")
+
+        document.querySelector("body").classList.remove("dark")
+
+        document.querySelector(".navbar").classList.remove("dark")
+
+      } else {
+        localStorage.setItem("mode", "dark")
+        document.querySelector("#line2").innerHTML=`<i class="ri-sun-line"></i> Light`
+
+        document.querySelector("body").classList.remove("light")
+
+        document.querySelector(".navbar").classList.remove("light")
+        document.querySelector("body").classList.add("dark")
+        document.querySelector(".navbar").classList.add("dark")
+
+      }
+    })
+  document.querySelector("#logout").addEventListener("click",function(){
+         localStorage.removeItem("mode")    
+  })
+  </script>
+</body>
+
+</html>

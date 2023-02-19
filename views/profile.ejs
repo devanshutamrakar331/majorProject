@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/stylesheets/profile.css" />
+</head>
+
+<body>
+
+  <div class="main">
+    
+    
+    <%- include partials/courseNav.ejs %>
+    <!-- <%- include partials/loader.ejs %> -->
+      <div class="heading">
+        <%if(user!==null){%>
+          <h4>Hi, <%=user.name%>
+          </h4>
+          <%}%>
+            <h1>Welcome to Go.Buddy</h1>
+      </div>
+      <div class="conatiner">
+        <h4>Categories</h4>
+        <div class="categories">
+          <%categories.forEach(function(category){%>
+            <div class="one" onclick="location.href=`/courses/<%=category.name%>`">
+
+              <h5>
+                <%=category.name%>
+              </h5>
+            </div>
+            <%})%>
+        </div>
+
+        <div class="daily-nav">
+          <div class="daily-nav-left">
+            <h3>Courses </h3>
+            <span>
+              <%=courses.length%>
+            </span>
+          </div>
+          <button class="view-all">View All</button>
+        </div>
+        <div class="card-container">
+          <%courses.forEach(function(courses){%>
+            <%if(user===null){%>
+              <div class="card" onclick="location.href='/course/<%=courses.name%>'">
+                <%}else{%>
+                  <div class="card" onclick="location.href='/profile/course/<%=courses.name%>'">
+
+                    <%}%>
+                      <img src="/images/files/<%=courses.photo%>" alt="" />
+                      <div class="card-text">
+                        <h4>
+                          <%=courses.name%>
+                        </h4>
+                        <h5 style="text-transform: capitalize;font-weight: 600;" class="instructor">
+                          By <%=courses.instructor%>
+                        </h5>
+                        <h5>
+                          <%=courses.time%>
+                        </h5>
+
+                        <div class="card-text-price">
+                          <h6>
+                            &#8377 <%=(courses.price - Math.floor((courses.discount*courses.price)/100))%>
+
+                          </h6>
+                          <s class="s">&#8377 <%=courses.price%></s>
+                          <div class="card-text-price-discount">
+                            <%=courses.discount%> % OFF
+                          </div>
+                        </div>
+
+                      </div>
+                  </div>
+
+                  <%})%>
+
+              </div>
+        </div>
+
+        <%- include partials/courseFooter.ejs %>
+      </div>
+
+  </div>
+  <script src="https://unpkg.com/loading-progress-bar"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+    integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+     if (localStorage.getItem("mode") === "light") {
+      document.querySelector("body").classList.add("light")
+      document.querySelector(".navbar").classList.add("light")
+      document.querySelector("body").classList.remove("dark")
+      document.querySelector(".navbar").classList.remove("dark")
+
+    } else {
+
+      document.querySelector("body").classList.remove("light")
+      document.querySelector(".navbar").classList.remove("light")
+      document.querySelector("body").classList.add("dark")
+      document.querySelector(".navbar").classList.add("dark")
+
+    }
+
+
+</script>
+
+</body>
+
+</html>

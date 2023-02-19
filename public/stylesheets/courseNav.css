@@ -1,0 +1,326 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  font-family: Gilroy;
+}
+html,
+body {
+  /* overflow-x: hidden; */
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(16, 20, 38);
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+}
+.ri-menu-line {
+  display: none;
+}
+.navbar {
+  display: flex;
+  width: 100%;
+  color: white;
+
+  padding: 2vh 11vw;
+  height: 15vh;
+  background-color: #101426;
+}
+.navbar li {
+  list-style: none;
+}
+.nav-left {
+  width: 40%;
+  gap: 10%;
+  display: flex;
+  align-items: center;
+}
+.nav-left h1 {
+  font-size: 1.8rem;
+  font-weight: 550;
+}
+.nav-left input {
+  width: 15vw;
+  position: relative;
+  background: transparent;
+  color: white;
+  border: 2px solid rgb(106, 102, 102);
+
+  padding-left: 1vw;
+
+  border-radius: 5px;
+  height: 60%;
+}
+.nav-left input:focus {
+  outline: none;
+}
+.nav-left i {
+  left: 37.4%;
+  position: absolute;
+}
+.nav-right {
+  display: flex;
+  width: 60%;
+  padding-left: 4vw;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-right a {
+  color: white;
+  text-decoration: none;
+}
+.nav-right a:hover {
+  transition: 0.2s;
+  color: blueviolet;
+}
+#line i {
+  margin-right: 0.5vw;
+}
+#line {
+  border: 1px solid blueviolet;
+  padding: 1.5vh 1.5vw;
+  color: white;
+  border-radius: 5px;
+  background: transparent;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+#line:hover {
+  transition: 0.2s;
+  background: rgba(17, 16, 16, 0.759);
+}
+#fill:hover {
+  transition: 0.2s;
+  background: rgb(84, 16, 148);
+}
+#fill {
+  padding: 1.5vh 1.5vw;
+  background: blueviolet;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.user-icon {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  background: #f4c714;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-icon h1 {
+  color: black;
+  text-transform: uppercase;
+  font-size: 1.2vw;
+  font-weight: 550;
+}
+.user-photo {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+}
+.label {
+  position: absolute;
+  right: -10%;
+  width: 12px;
+  height: 12px;
+  background-color: rgb(192, 112, 242);
+  border-radius: 50%;
+}
+.label2 {
+  position: absolute;
+  top: 0;
+  right: -10%;
+  width: 12px;
+  height: 12px;
+  background-color: purple;
+  border-radius: 50%;
+}
+.user-photo img {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100%;
+}
+.nav-next {
+  background: rgb(18, 26, 40);
+  position: fixed;
+  width: 18vw;
+  z-index: 9999;
+  display: flex;
+  display: none;
+  right: 5%;
+  top: 15%;
+  padding: 2vh 0;
+  height: 22vh;
+
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#line2:hover {
+  background: rgba(122, 122, 209, 0.1);
+}
+#line2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 1.5vh 2vw;
+  cursor: pointer;
+  transition: 0.4s;
+  color: white;
+  border: none;
+  background: rgba(122, 122, 209, 0.23);
+  border-radius: 5px;
+}
+.nav-next a {
+  font-size: 1.2vw;
+  color: white;
+  text-decoration: none;
+}
+.nav-next a:hover {
+  color: blueviolet;
+  transition: 0.5s;
+}
+.light #line {
+  color: black;
+  border: 2px solid blueviolet;
+}
+.light #line:hover {
+  background: rgba(88, 1, 106, 0.871);
+  transition: 0.5s;
+  color: white;
+}
+.light #fill {
+  background: rgba(88, 1, 106, 0.871);
+  border: 2px solid blueviolet;
+  padding: 1.5vh 1.5vw;
+}
+.light #fill:hover {
+  color: black;
+  padding: 1.5vh 1.5vw;
+  border: 2px solid blueviolet;
+
+  transition: 0.5s;
+  background-color: transparent;
+}
+.light {
+  background-color: white;
+  color: black;
+}
+.light a {
+  color: black;
+}
+.light .course-container {
+  color: black;
+}
+.light .course-right {
+  background-color: white;
+}
+.light .card {
+  background: white;
+}
+.light .one {
+  color: black;
+  background: white;
+}
+.dark .footer a {
+  color: white;
+}
+.light .instructor {
+  color: black;
+}
+.light .s {
+  color: black;
+}
+.light .one:hover {
+  background: rgb(104, 13, 104);
+  transition: 0.5s;
+  cursor: pointer;
+  color: white;
+}
+.light .nav-next {
+  background: white;
+}
+.light .daily-nav span {
+  font-size: 1vw;
+  font-weight: 600;
+  background-color: white;
+}
+.light #line2 {
+  background: rgba(88, 1, 106, 0.871);
+}
+.light #line2:hover {
+  background: rgba(47, 1, 56, 0.871);
+}
+.dark {
+  color: white;
+  background-color: rgb(16, 20, 38);
+}
+.dark a {
+  color: whites;
+}
+
+@media screen and (max-width: 850px) {
+  .nav-right {
+    display: none;
+  }
+  .navbar {
+    position: relative;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+  }
+  .ri-menu-line {
+    display: block;
+    z-index: 999;
+    top: 3.5%;
+    right: 10%;
+    position: absolute;
+    color: white;
+    font-size: 25px;
+  }
+  .nav-left {
+    width: 80%;
+    padding: 1vh 0;
+  }
+  .nav-left h1 {
+    font-size: 4vw;
+  }
+  .nav-left i {
+    left: 65%;
+  }
+  .nav-left input {
+    width: 30vw;
+    height: 5vh;
+  }
+  .nav-right {
+    display: block;
+    margin-bottom: 2vw;
+
+    height: fit-content;
+    padding: 2vh 2vw;
+    width: 100%;
+    display: none;
+  }
+  li {
+    display: block;
+    padding: 1vh 0;
+  }
+  li a {
+    display: block;
+    padding: 1vh 0;
+    font-size: 3vw;
+  }
+}

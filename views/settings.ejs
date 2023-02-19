@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/settings.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div class="overlay">
+        <form action="/changepassword/<%=user._id%>" method="post">
+          <h3>Reset Password</h3>
+          <label for="email">
+            Old Password <br />
+            <input
+              type="password"
+              name="oldpassword"
+              autoComplete="off"
+              required
+            />
+          </label>
+          <label for="password">
+            New Password <br />
+            <input
+              type="password"
+              autoComplete="off"
+              name="newpassword"
+              class="newpassword"
+              required
+              id="password"
+            />
+          </label>
+          <label for="password">
+            Confirm Password <br />
+            <input
+              type="password"
+              autoComplete="off"
+              name="confirmpassword"
+              class="confirmpassword"
+              required
+              id="password"
+            />
+          </label>
+          <div class="btn">
+            <button id="btn-cancel">CANCEL</button>
+
+            <button id="btn-submit" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      <%- include partials/courseNav.ejs %>
+
+      <div class="account">
+        <h1>Account</h1>
+        <div class="account-container">
+          <div class="account-left">
+            <div class="account-btn">
+              <button id="myprofile" onclick="location.href='/account/profile'">
+                <i class="ri-user-line"></i>My Profile
+              </button>
+              <button id="settings">
+                <i class="ri-settings-5-line"></i>Settings
+              </button>
+            </div>
+          </div>
+          <div class="account-right">
+            <div class="account-right-first">
+              <h1>Settings</h1>
+            </div>
+            <div class="account-details">
+              <h2>Dark Mode</h2>
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="account-details">
+              <div class="account-text">
+                <h2>Support</h2>
+                <p>Raise tickets regarding any issue with this app here</p>
+              </div>
+              <i class="ri-arrow-drop-right-line"></i>
+            </div>
+
+            <div class="account-details resetpassword">
+              <div class="account-text">
+                <h2>Reset Your Password</h2>
+
+                <p>Change your password for security</p>
+              </div>
+              <i class="ri-arrow-drop-right-line"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include partials/courseFooter.ejs%>
+    </div>
+    <script>
+      if (localStorage.getItem("mode") === "light") {
+        document.querySelector(".switch input[type=checkbox]").checked = false;
+
+        document.querySelector("body").classList.add("light");
+        document.querySelector(".navbar").classList.add("light");
+        document.querySelector("body").classList.remove("dark");
+        document.querySelector(".navbar").classList.remove("dark");
+      } else {
+        document.querySelector(".switch input[type=checkbox]").checked = true;
+
+        document.querySelector("body").classList.remove("light");
+        document.querySelector(".navbar").classList.remove("light");
+        document.querySelector("body").classList.add("dark");
+        document.querySelector(".navbar").classList.add("dark");
+      }
+      var checkbox = document.querySelector(".switch input[type=checkbox]");
+
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked === true) {
+          localStorage.setItem("mode", "dark");
+
+          document.querySelector(".switch input[type=checkbox]").checked = true;
+
+          document.querySelector(
+            "#line2"
+          ).innerHTML = `<i class="ri-sun-line"></i> Light`;
+
+          document.querySelector("body").classList.remove("light");
+          document.querySelector(".navbar").classList.remove("light");
+          document.querySelector("body").classList.add("dark");
+          document.querySelector(".navbar").classList.add("dark");
+        } else {
+          localStorage.setItem("mode", "light");
+
+          document.querySelector(
+            ".switch input[type=checkbox]"
+          ).checked = false;
+          document.querySelector(
+            "#line2"
+          ).innerHTML = `<i class="ri-moon-fill"></i> Dark`;
+
+          document.querySelector("body").classList.add("light");
+          document.querySelector(".navbar").classList.add("light");
+          document.querySelector("body").classList.remove("dark");
+          document.querySelector(".navbar").classList.remove("dark");
+        }
+      });
+
+      document
+        .querySelector(".resetpassword")
+        .addEventListener("click", function (dets) {
+          document.querySelector(".overlay").style.display = "block";
+          document.querySelector("html body").style.overflow = "hidden";
+        });
+
+      const form = document.querySelector("form");
+      const confirmpassword = document.querySelector(".confirmpassword");
+      const newpassword = document.querySelector(".newpassword");
+      form.addEventListener("submit", function (dets) {
+        if (newpassword.value !== confirmpassword.value) {
+          dets.preventDefault();
+          return alert("Passwords do not match ");
+        }
+      });
+
+      document
+        .querySelector("#btn-cancel")
+        .addEventListener("click", function () {
+          document.querySelector(".overlay").style.display = "none";
+        });
+    </script>
+  </body>
+</html>

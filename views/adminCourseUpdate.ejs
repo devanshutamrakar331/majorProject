@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap dem</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      width: 100%;
+      background: rgb(204, 231, 247);
+
+      min-height: 100vh;
+    }
+    #main {
+      width: 100%;
+      min-height: 100vh;
+    }
+    .left {
+      border: 1px solid black;
+      width: 16%;
+      position: fixed;
+      height: 100vh;
+      background: rgb(1, 8, 36);
+    }
+    .right {
+      width: 84%;
+      height: 100vh;
+      position: relative;
+      left: 16%;
+    }
+    .box {
+      width: 100%;
+      height: 150%;
+      display: flex;
+    }
+    .admin-info {
+      display: flex;
+      color: white;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      padding-top: 3vh;
+      width: 100%;
+      height: 30%;
+    }
+    .admin-photo {
+      width: 10vw;
+      border-radius: 50%;
+      height: 20vh;
+    }
+    .admin-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .admin-info form {
+      display: none;
+    }
+    .admin-section {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      margin-top: 5vw;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    a:hover {
+      color: white;
+    }
+    .section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
+      height: 20vh;
+    }
+    .section:hover {
+      transition: 0.2s;
+      background-color: rgb(4, 1, 14);
+    }
+    .course-crud-box {
+      width: 90%;
+
+      margin-left: 4vw;
+      height: 70vh;
+    }
+    label {
+      display: flex;
+      margin: 1vh;
+    }
+    select {
+      width: 10vw;
+      padding: 1vh 1vw;
+    }
+    .add-course textarea {
+      width: 50vw;
+      outline: none;
+      padding: 1vh 1vw;
+      border: none;
+      resize: none;
+      font-family: gilroy;
+      border-radius: 10px;
+      height: 10vw;
+    }
+    input::file-selector-button {
+      background: #000;
+      color: white;
+      margin-right: 1vw;
+
+      font-family: gilroy;
+      padding: 1vh 3vw;
+      border-radius: 5px;
+    }
+
+    .add-course {
+      width: 70vw;
+      height: 95vh;
+      display: flex;
+      transition: 0.5s;
+      flex-direction: column;
+      padding-left: 5vw;
+      justify-content: space-between;
+      border-radius: 10px;
+      margin-top: 2vw;
+      font-family: gilroy;
+    }
+
+    #submit {
+      padding: 1vh 3vw;
+      border: none;
+      border-radius: 5px;
+      background: rgb(9, 199, 9);
+      color: white;
+    }
+    .add-course input {
+      outline: none;
+      padding-left: 1vw;
+      padding-top: 0.8vw;
+      padding-bottom: 0.8vw;
+      font-size: 1vw;
+      width: 50vw;
+
+      border-radius: 5px;
+      border: none;
+    }
+    .courses {
+      display: grid;
+      width: 100%;
+      row-gap: 10vh;
+      height: fit-content;
+      margin-top: 5vh;
+      grid-template-columns: auto auto auto;
+    }
+  </style>
+  <body>
+    <div id="main">
+      <div class="box">
+        <div class="left">
+          <div class="admin-info">
+            <div class="admin-photo">
+              <img src="/images/files/<%=user.profilePic%>" alt="" />
+              <form
+                action="/adminphoto"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <input
+                  type="file"
+                  name="adminImage"
+                  id=""
+                  onchange="form.submit()"
+                />
+                <input type="submit" value="set image" />
+              </form>
+            </div>
+            <h1 class="text-center pt-4 fs-5"><%=user.name%></h1>
+            <div
+              class="admin-section mt-lg-5 flex-column justify-content-between"
+            >
+              <div class="section"><a href="/adminDashboard">Home</a></div>
+              <div class="section">
+                <a href="/adminDashboard/categories">Category</a>
+              </div>
+              <div class="section">
+                <a href="/adminDashboard/courses">Courses</a>
+              </div>
+              <div class="section">
+                <a href="//adminDashboard/payments">Payments</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          <h1 class="text-center pt-4 fs-3">Admin Dashboard</h1>
+
+          <h1 class="m-lg-5 fs-2">Courses</h1>
+       
+            <div class="add-course">
+              <form
+                action="/adminDashboard/courses/update/<%=currentCourse.name%>"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <label for="name">Course Name</label>
+                <input
+                  type="text"
+                  name="coursename"
+                  value="<%=currentCourse.name%>"
+                  placeholder="Enter course name"
+                />
+                <label for="name">Course Instructor</label>
+                <input
+                  type="text"
+                  name="courseinstructor"
+                  value="<%=currentCourse.instructor%>"
+                  placeholder="Enter course instructor"
+                />
+                <label for="desc">Course Description</label>
+                <textarea
+                  name="coursedesc"
+
+                  placeholder="Enter course description"
+                ><%=currentCourse.desc%></textarea>
+                <label for="">Course Type</label>
+                <input
+                  type="text"
+                  name="coursetype"
+                  value="<%=currentCourse.type%>"
+
+                  placeholder="Enter course type "
+                />
+
+                <label for="">Course Time</label>
+                <input
+                  type="text"
+                  name="coursetime"
+                  value="<%=currentCourse.time%>"
+
+                  placeholder="Enter course time "
+                />
+                <label for="">Course Syllabus</label>
+                 <textarea
+                  name="coursesyllabus"
+
+                  placeholder="Enter course details"
+                ><%=currentCourse.syllabus%></textarea>
+                <label for="">Course Price</label>
+                <input
+                  type="text"
+                  name="courseprice"
+                  value="<%=currentCourse.price%>"
+
+                  placeholder="Enter course price "
+                />
+                <label for="">Course Discount</label>
+                <input
+                  type="text"
+                  name="coursediscount"
+                  value="<%=currentCourse.discount%>"
+
+                  placeholder="Enter course discount "
+                />
+
+                <label for="">Course Category</label>
+                <select name="coursecategory" id="" value="<%=currentCourse.category%>">
+                  <%categories.forEach(function(dets){%>
+                  <option value="<%=dets.name%>"><%=dets.name%></option>
+                  <%})%>
+                </select>
+                <label for="">Course Start</label>
+                <input
+                  type="text"
+                  name="coursestart"
+                  value="<%=currentCourse.start%>"
+
+                  placeholder="Enter course start "
+                />
+                <label for="">Course Details</label>
+                <textarea
+                  name="coursedetails"
+
+                  placeholder="Enter course details"
+                ><%=currentCourse.details%></textarea>
+                <label for="">Course Photo</label>
+                <input type="file" id="fileinput" name="coursephoto" id="" 
+                  value="<%=currentCourse.photo%>"
+                 />
+                <button  class="bg-warning text-bg-danger"  type="submit" id="submit">Update</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document
+        .querySelector(".admin-photo")
+        .addEventListener("click", function (dets) {
+          document.querySelector(".admin-info form [type=file]").click();
+        });
+    </script>
+  </body>
+</html>

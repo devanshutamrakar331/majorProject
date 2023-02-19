@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+#main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.cart-section {
+  width: 100%;
+  padding: 7vh 10vw;
+  min-height: 100vh;
+}
+.cart-section h1 {
+  font-size: 2.5vw;
+  font-weight: 450;
+}
+.cart-section > h4 {
+  font-weight: 400;
+  font-size: 1.2vw;
+  word-spacing: 2px;
+  padding-top: 8vh;
+}
+.cart-left {
+  width: 70%;
+  /* height: fit-content; */
+  display: flex;
+  height: 80vh;
+  margin-top: 4vh;
+
+  flex-direction: column;
+  align-items: center;
+}
+.cart {
+  width: 100%;
+  border-top: 1px solid rgb(30, 36, 68);
+  border-bottom: 1px solid rgb(30, 36, 68);
+  height: 20vh;
+  display: flex;
+  justify-content: space-around;
+}
+.cart-main-data {
+  width: 60%;
+  height: 100%;
+  display: flex;
+}
+.cart-photo {
+  width: 40%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.cart-photo img {
+  width: 9vw;
+  height: 12vh;
+}
+.cart-data {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1vh 0;
+  justify-content: space-around;
+}
+.cart-data h3 {
+  font-size: 1.2vw;
+  width: 120%;
+}
+.cart-data h5 {
+  font-size: 1vw;
+  font-weight: 400;
+  color: rgb(207, 203, 203);
+}
+.cart-data h6 {
+  font-size: 0.8vw;
+  font-weight: 400;
+}
+.cart-data h4 {
+  width: fit-content;
+  color: white;
+  padding: 0.3vh 1vw;
+  background: rgb(99, 99, 214);
+}
+.cart-function {
+  width: 16%;
+  height: 100%;
+  display: flex;
+  padding-top: 2vh;
+  gap: 1vh;
+  font-size: 0.8vw;
+  flex-direction: column;
+}
+.cart-function a {
+  text-decoration: none;
+  color: white;
+}
+.cart-price {
+  padding-top: 2vh;
+}
+.cart-price h1 {
+  font-size: 1.1vw;
+  padding-right: 0.5vw;
+}
+.cart-price-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-price-data i {
+  rotate: 270deg;
+}
+
+.cart-right {
+  width: 23vw;
+  height: 35vh;
+  position: absolute;
+  top: 36%;
+  /* border: 1px solid white; */
+  padding: 1vh 1vw;
+  right: 8%;
+  /* background: white; */
+}
+.cart-right > h3 {
+  font-size: 1.5vw;
+  font-weight: 400;
+}
+.cart-right > h1 {
+  font-size: 2.5vw;
+  padding-top: 1.8vh;
+}
+.btn-checkout {
+  border: none;
+  padding: 2vh 7vw;
+  margin-top: 2.5vh;
+  font-weight: 500;
+  font-size: 1vw;
+  font-family: gilroy;
+  background: blueviolet;
+  color: white;
+}

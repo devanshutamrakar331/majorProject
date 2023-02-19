@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/signup.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="main">
+      <div class="signupcard">
+        <div class="signuptext">
+          <h1 onclick="location.href='/'" style="cursor: pointer">
+            { Go.Buddy }
+          </h1>
+          <h2>Create your Account</h2>
+          <a href="/login">
+            <h3>Already have an account ?</h3>
+          </a>
+        </div>
+        <form action="/register" method="post">
+          <label for="name">
+            Name <br />
+            <input
+              type="text"
+              name="name"
+              autoComplete="off"
+              placeholder="Enter your Name"
+            />
+          </label>
+          <label for="email">
+            Email <br />
+            <input
+              type="email"
+              name="email"
+              autoComplete="off"
+              placeholder="Enter your Email"
+            />
+            <%if(errors !==null && typeof errors[0] !=="undefined"){%>
+            <h5
+              style="
+                color: rgb(253, 51, 51);
+                font-weight: 500;
+                font-size: 0.8rem;
+              "
+            >
+              <%=errors[0].msg%>
+            </h5>
+            <%}%>
+          </label>
+          <label for="password">
+            Password <br />
+            <input
+              type="password"
+              autoComplete="off"
+              name="password"
+              placeholder="Enter your Password"
+              id="password"
+            />
+            <%if(errors !==null && typeof errors[1] !=="undefined"){%>
+            <h5
+              style="
+                color: rgb(253, 51, 51);
+                font-weight: 500;
+                font-size: 0.8rem;
+              "
+            >
+              <%=errors[1].msg%>
+            </h5>
+            <%}%>
+          </label>
+          <i id="toggle" class="ri-eye-line"></i>
+          <br />
+          <button id="btn-signup">Sign up</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const toggle = document.querySelector("#toggle");
+      const password = document.querySelector("#password");
+
+      toggle.addEventListener("click", function (dets) {
+        const type =
+          password.getAttribute("type") === "password" ? "text" : "password";
+        password.setAttribute("type", type);
+        this.classList.toggle("ri-eye-off-line");
+      });
+    </script>
+  </body>
+</html>

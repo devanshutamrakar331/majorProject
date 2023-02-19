@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/myaccount.css" />
+  </head>
+  <body>
+    <div id="main">
+      <%- include partials/courseNav.ejs %>
+      <div class="account">
+        <h1>Account</h1>
+        <div class="account-container">
+          <div class="account-left">
+            <div class="account-btn">
+              <button id="myprofile">
+                <i class="ri-user-line"></i>My Profile
+              </button>
+              <button id="settings" onclick="location.href='/account/settings'">
+                <i class="ri-settings-5-line"></i>Settings
+              </button>
+            </div>
+          </div>
+          <div class="account-right">
+            <div class="account-right-first">
+              <form
+                action="/userphoto"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <input type="file" name="userdp" onchange="form.submit()" />
+                <button type="submit">Submit</button>
+              </form>
+              <%if(user.profilePic==="def.jpg"){%>
+
+              <div class="profile-icon">
+                <h1><%=shortname%></h1>
+              </div>
+              <%}else{%>
+              <div class="profile-photo">
+                <img src="/images/files/<%=user.profilePic%>" alt="" />
+              </div>
+
+              <%}%>
+            </div>
+            <div class="account-details">
+              <h2>Account name</h2>
+              <h1><%=user.name%></h1>
+            </div>
+            <div class="account-details">
+              <h2>Email</h2>
+              <h1><%=user.username%></h1>
+            </div>
+            <div class="account-details">
+              <h2>Contact Number</h2>
+              <h1>8305371292</h1>
+            </div>
+            <div class="account-details" style="border: none">
+              <h2>My Addresses</h2>
+              <div class="add-right">
+                <div class="add-right-up">
+                  <h5>BILLING ADDRESS</h5>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Esse animi, inventore optio reprehenderit voluptate
+                    accusantium.
+                  </p>
+                </div>
+                <div class="add-right-down">
+                  <h5>SHIPPING ADDRESS</h5>
+                  <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Esse animi, inventore optio reprehenderit voluptate
+                    accusantium.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%- include partials/courseFooter.ejs%>
+    </div>
+    <script>
+      if (localStorage.getItem("mode") === "light") {
+        document.querySelector("body").classList.add("light");
+        document.querySelector(".navbar").classList.add("light");
+        document.querySelector("body").classList.remove("dark");
+        document.querySelector(".navbar").classList.remove("dark");
+      } else {
+        document.querySelector("body").classList.remove("light");
+        document.querySelector(".navbar").classList.remove("light");
+        document.querySelector("body").classList.add("dark");
+        document.querySelector(".navbar").classList.add("dark");
+      }
+
+      document
+        .querySelector(".profile-photo")
+        .addEventListener("click", function () {
+          document
+            .querySelector(".account-right-first form input[type=file]")
+            .click();
+        });
+    </script>
+  </body>
+</html>

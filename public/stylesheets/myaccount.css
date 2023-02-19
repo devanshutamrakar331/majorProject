@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+#main {
+  width: 100%;
+  min-height: 100vh;
+}
+.account {
+  height: 100vh;
+  width: 100%;
+  padding: 8vh 11vw;
+}
+.account h1 {
+  font-weight: bold;
+}
+.account-container {
+  padding: 5vh 0;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.account-left {
+  width: 26%;
+  height: 100%;
+}
+.account-btn {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.account-right {
+  width: 71%;
+  padding: 4vh 1.5vw;
+  border: 2px solid rgb(31, 30, 63);
+  border-radius: 5px;
+  height: 100%;
+}
+.account-left button {
+  padding: 2vh;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  border: none;
+  border-radius: 5px;
+  justify-content: flex-start;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+}
+#myprofile {
+  background: rgb(31, 30, 63);
+}
+#settings {
+  background-color: transparent;
+}
+#settings:hover {
+  transition: 0.4s;
+  background: rgba(30, 29, 61, 0.679);
+}
+.account-right-first {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.profile-icon {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  cursor: pointer;
+  background: #f4c714;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-icon h1 {
+  color: black;
+  text-transform: uppercase;
+  font-size: 1.2vw;
+  font-weight: 550;
+}
+.profile-photo {
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+}
+.profile-photo img {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100%;
+}
+.profile-icon:hover {
+  background-color: rgba(255, 255, 255, 0.814);
+}
+.profile-photo:hover {
+  background-color: rgba(255, 255, 255, 0.803);
+}
+.profile-photo img:hover {
+  background-color: rgba(255, 255, 255, 0.803);
+}
+form {
+  display: none;
+}
+
+.account-details {
+  width: 100%;
+  display: flex;
+  padding-top: 3vh;
+  padding-left: 1vw;
+  border-bottom: 1px solid rgba(31, 30, 63, 0.532);
+
+  height: calc(80% / 5);
+}
+.account-details h1 {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-left: 3vw;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.account-details h2 {
+  font-size: 1.1rem;
+  width: 10vw;
+  font-weight: 390;
+}
+.add-right {
+  width: 70%;
+  margin-left: 3vw;
+  height: 22vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.add-right h5 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 550;
+}
+.add-right p {
+  padding-top: 1vh;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
